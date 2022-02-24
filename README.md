@@ -2,21 +2,6 @@
 
 This App allows users to add, update and delete feedback. It uses a mock REST api with json-server.
 
-This project goes over all of the fundamentals of React including...
-
-- Components
-- JSX
-- Props (proptypes, defaultprops, etc)
-- State (Component & App Level)
-- Styling
-- Handling Events
-- Lists & Keys
-- Forms
-- Context API
-- HTTP Requests
-
----
-
 ### Bug Fixes, corrections and code FAQ
 
 The repository code here on the main branch has been updated due to bugs and issues found by students since the course was released.
