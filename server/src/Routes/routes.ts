@@ -1,9 +1,19 @@
-import {Router} from "express";
-import { fetchFeedback } from "../controllers/controller";
+import { Router } from 'express'
+import {
+  postFeedback,
+  fetchFeedback,
+  updateFeedback,
+  deleteFeedback,
+} from '../controllers/controller'
 
 const router = Router()
 
-router.get('/', fetchFeedback )
+router.post('/', postFeedback)
 
+router.get('/', fetchFeedback)
+
+router.put('/:id', updateFeedback)
+
+router.delete('/:id', deleteFeedback)
 
 export default router
