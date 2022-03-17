@@ -34,7 +34,7 @@ export const updateFeedback: RequestHandler = (req, res) => {
   feedback[found].text = req.body.text
 
   res.status(200).json({
-    message: `You have updated item with id ${feedback[found].id}`,
+    message: feedback[found]
   })
 }
 

@@ -35,7 +35,7 @@ const updateFeedback = (req, res) => {
     feedback_1.default[found].rating = +req.body.rating;
     feedback_1.default[found].text = req.body.text;
     res.status(200).json({
-        message: `You have updated item with id ${feedback_1.default[found].id}`,
+        message: feedback_1.default[found]
     });
 };
 exports.updateFeedback = updateFeedback;
