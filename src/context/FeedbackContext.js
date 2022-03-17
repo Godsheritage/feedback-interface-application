@@ -30,16 +30,23 @@ export const FeedbackProvider = ({ children }) => {
   }
 
   // Add feedback
-  const addFeedback = async (newFeedback) => {
-    const response = await fetch('/feedback', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newFeedback),
-    })
+  // const addFeedback = async (newFeedback) => {
+  //   const response = await fetch('/feedback', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(newFeedback),
+  //   })
 
-    const data = await response.json()
+  //   const data = await response.json()
+
+  //   setFeedback([data, ...feedback])
+  // }
+  const addFeedback = async (newFeedback) => {
+    const response = await axios.post('http://localhost:5000/feedback', newFeedback)
+
+    const data = response.data.newItem
 
     setFeedback([data, ...feedback])
   }
