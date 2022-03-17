@@ -20,7 +20,7 @@ const postFeedback = (req, res) => {
 exports.postFeedback = postFeedback;
 const fetchFeedback = (req, res) => {
     res.status(200).json({
-        message: feedback_1.default,
+        feedbackItems: feedback_1.default,
     });
 };
 exports.fetchFeedback = fetchFeedback;

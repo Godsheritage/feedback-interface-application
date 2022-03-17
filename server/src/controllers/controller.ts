@@ -15,16 +15,15 @@ export const postFeedback: RequestHandler = (req, res) => {
     newItem: newFeedback,
   })
 }
+
 export const fetchFeedback: RequestHandler = (req, res) => {
   res.status(200).json({
-    message: feedback,
+    feedbackItems: feedback,
   })
 }
 export const updateFeedback: RequestHandler = (req, res) => {
   const id = req.params.id
-
   const found = feedback.findIndex((items) => items.id === +id)
-
   if (found < 0) {
     return res.status(400).json({
       error: `item with id ${id} is not found`,

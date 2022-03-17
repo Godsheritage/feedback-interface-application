@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { createContext, useState, useEffect } from 'react'
 
 const FeedbackContext = createContext()
@@ -15,11 +16,16 @@ export const FeedbackProvider = ({ children }) => {
   }, [])
 
   // Fetch feedback
-  const fetchFeedback = async () => {
-    const response = await fetch(`/feedback?_sort=id&_order=desc`)
-    const data = await response.json()
+  // const fetchFeedback = async () => {
+  //   const response = await fetch(`/feedback?_sort=id&_order=desc`)
+  //   const data = await response.json()
 
-    setFeedback(data)
+  //   setFeedback(data)
+  //   setIsLoading(false)
+  // }
+  const fetchFeedback = async () => {
+    const response = await axios.get('http://localhost:5000/feedback')
+    setFeedback(response.data.feedbackItems)
     setIsLoading(false)
   }
 
