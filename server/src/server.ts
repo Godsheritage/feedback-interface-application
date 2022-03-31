@@ -4,6 +4,7 @@ import path from 'path';
 const app = express();
 
 const PORT = process.env.PORT || 5000;
+// seperate the server code from the express middleware then deploy 
 
 app.use((req, res, next) => {
   res.append('Access-Control-Allow-Origin', ['*'])

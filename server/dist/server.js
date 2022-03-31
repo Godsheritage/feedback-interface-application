@@ -8,6 +8,7 @@ const routes_1 = __importDefault(require("./Routes/routes"));
 const path_1 = __importDefault(require("path"));
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 5000;
+// seperate the server code from the express middleware then deploy 
 app.use((req, res, next) => {
     res.append('Access-Control-Allow-Origin', ['*']);
     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
