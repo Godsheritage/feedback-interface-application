@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    
     "client-install": "npm install --prefix client",
     "server-install": "npm install --prefix server",
     "install": "npm run client-install && npm run server-install",
     "client": "npm start --prefix client",
     "server": "npm start --prefix server",
-    "start": "npm run client & npm run server"
+    "start": "npm run client & npm run server",
+    "deploy": "npm run build --prefix client && npm run server"
   },
   "repository": {
     "type": "git",

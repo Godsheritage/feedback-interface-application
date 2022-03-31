@@ -11,38 +11,17 @@ export const FeedbackProvider = ({ children }) => {
     edit: false,
   })
 
-  useEffect(() => {
-    fetchFeedback()
-  }, [])
-
-  // Fetch feedback
-  // const fetchFeedback = async () => {
-  //   const response = await fetch(`/feedback?_sort=id&_order=desc`)
-  //   const data = await response.json()
-
-  //   setFeedback(data)
-  //   setIsLoading(false)
-  // }
+  //to fetch all feedback items from the server
   const fetchFeedback = async () => {
     const response = await axios.get('http://localhost:5000/feedback')
     setFeedback(response.data.feedbackItems)
     setIsLoading(false)
   }
 
-  // Add feedback
-  // const addFeedback = async (newFeedback) => {
-  //   const response = await fetch('/feedback', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(newFeedback),
-  //   })
+  useEffect(() => {
+    fetchFeedback()
+  }, [])
 
-  //   const data = await response.json()
-
-  //   setFeedback([data, ...feedback])
-  // }
   const addFeedback = async (newFeedback) => {
     const response = await axios.post('http://localhost:5000/feedback', newFeedback)
 
@@ -51,14 +30,7 @@ export const FeedbackProvider = ({ children }) => {
     setFeedback([data, ...feedback])
   }
 
-  // Delete feedback
-  // const deleteFeedback = async (id) => {
-  //   if (window.confirm('Are you sure you want to delete?')) {
-  //     await fetch(`/feedback/${id}`, { method: 'DELETE' })
 
-  //     setFeedback(feedback.filter((item) => item.id !== id))
-  //   }
-  // }
 
   const deleteFeedback = async (id) => {
     if (window.confirm('Are you sure you want to delete?')) {
@@ -69,29 +41,6 @@ export const FeedbackProvider = ({ children }) => {
       setFeedback(feedback.filter((item) => item.id !== id))
     }
   }
-
-  // Update feedback item
-  // const updateFeedback = async (id, updItem) => {
-  //   const response = await fetch(`/feedback/${id}`, {
-  //     method: 'PUT',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(updItem),
-  //   })
-
-  //   const data = await response.json()
-
-  //   // NOTE: no need to spread data and item
-  //   setFeedback(feedback.map((item) => (item.id === id ? data : item)))
-
-  //   // FIX: this fixes being able to add a feedback after editing
-  //   setFeedbackEdit({
-  //     item: {},
-  //     edit: false,
-  //   })
-  // }
-
 
   const updateFeedback = async (id, updItem) => {
     const response = await axios.put(`http://localhost:5000/feedback/${id}`, updItem)

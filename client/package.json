@@ -8,7 +8,6 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.26.1",
-    "concurrently": "^6.3.0",
     "framer-motion": "^4.1.17",
     "json-server": "^0.17.0",
     "react": "^17.0.2",
@@ -16,16 +15,13 @@
     "react-icons": "^4.3.1",
     "react-router-dom": "^6.0.1",
     "react-scripts": "4.0.3",
-    "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "set BUILD_PATH=../server/public && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "json-server --watch db.json --port 6000",
-    "dev": "concurrently \"npm run server\" \"npm start\""
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
