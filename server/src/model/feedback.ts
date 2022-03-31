@@ -6,7 +6,7 @@ const feedback : feedbackTypes[] = [
   //   id: 0,
   //   rating: 10,
   //   text: 'This is feedback item 1 coming from the backend',
-  // },
+  // }, 
   // {
   //   id: 1,
   //   rating: 8,
