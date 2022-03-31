@@ -1,5 +1,5 @@
 import express from 'express'
-import router from './Routes/routes'
+import feedbackRouter from './Routes/feedback.routes'
 import path from 'path';
 const app = express();
 
@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-app.use('/feedback', router);
+app.use('/feedback', feedbackRouter);
 
 app.use(express.static(path.join(__dirname, "..", "public ")));
 
