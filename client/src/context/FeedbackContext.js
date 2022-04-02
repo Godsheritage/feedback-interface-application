@@ -3,9 +3,12 @@ import { createContext, useState, useEffect } from 'react'
 
 const FeedbackContext = createContext()
 
+// let id = 0; 
+
 export const FeedbackProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [feedback, setFeedback] = useState([])
+  const [id, setId] = useState(0)
   const [feedbackEdit, setFeedbackEdit] = useState({
     item: {},
     edit: false,
@@ -21,6 +24,17 @@ export const FeedbackProvider = ({ children }) => {
   useEffect(() => {
     fetchFeedback()
   }, [])
+
+  //TODO create an id state and set increment on every new feedback
+
+  const newFeedback = (text, rating) => {
+    setId(id + 1)
+    return ({
+      id : id,
+      text : text,
+      rating : rating
+    })
+  }
 
   const addFeedback = async (newFeedback) => {
     const response = await axios.post('http://localhost:5000/feedback', newFeedback)
@@ -69,6 +83,7 @@ export const FeedbackProvider = ({ children }) => {
         feedback,
         feedbackEdit,
         isLoading,
+        newFeedback,
         deleteFeedback,
         addFeedback,
         editFeedback,

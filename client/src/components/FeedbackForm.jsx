@@ -10,7 +10,7 @@ function FeedbackForm() {
   const [btnDisabled, setBtnDisabled] = useState(true)
   const [message, setMessage] = useState('')
 
-  const { addFeedback, feedbackEdit, updateFeedback } =
+  const { addFeedback, feedbackEdit, updateFeedback, newFeedback } =
     useContext(FeedbackContext)
 
   useEffect(() => {
@@ -43,15 +43,11 @@ function FeedbackForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (text.trim().length > 10) {
-      const newFeedback = {
-        text,
-        rating,
-      }
-
+     const newFeed = newFeedback(text , rating)
       if (feedbackEdit.edit === true) {
-        updateFeedback(feedbackEdit.item.id, newFeedback)
+        updateFeedback(feedbackEdit.item.id, newFeed)
       } else {
-        addFeedback(newFeedback)
+        addFeedback(newFeed)
       }
 
       // NOTE: reset to default state after submission

@@ -31,6 +31,14 @@ export const addNewFeedback = async (newFeedback: feedbackTypes) => {
   );
 };
 
+export const findItem = async (ID: number) => {
+  return await feedbackDatabase.findOne({
+    id : ID
+  })
+    // console.log( await findItem(1))
+} 
+
+
 
 
 export default feedback;
