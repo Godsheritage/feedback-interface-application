@@ -5,8 +5,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const http_1 = __importDefault(require("http"));
 const app_1 = __importDefault(require("./app"));
+const mongoose_1 = __importDefault(require("mongoose"));
 const PORT = process.env.PORT || 5000;
+const MONGO_URL = 'mongodb+srv://feedback-api:Heritage4lyf@feedbackcluster.pweoe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const server = http_1.default.createServer(app_1.default);
+mongoose_1.default.connection.once('open', () => {
+    console.log('MongoDB Connection is ready');
+});
+mongoose_1.default.connection.on('eror', (err) => {
+    console.error(err);
+});
+mongoose_1.default.connect(MONGO_URL);
 server.listen(PORT, () => {
     console.log(`Server is running at port ${PORT}...`);
 });
