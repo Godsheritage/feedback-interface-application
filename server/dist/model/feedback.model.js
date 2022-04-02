@@ -27,12 +27,6 @@ const getAllFeedback = async () => {
 };
 exports.getAllFeedback = getAllFeedback;
 const addNewFeedback = async (newFeedback) => {
-    // const {rating, text} = addfeedback
-    // const newFeedback: mongoTypes = {
-    //   rating,
-    //   text
-    // };
-    // feedback.push(newFeedback);
     await feedback_mongo_1.default.findOneAndUpdate({ rating: newFeedback.rating }, newFeedback, { upsert: true });
 };
 exports.addNewFeedback = addNewFeedback;
