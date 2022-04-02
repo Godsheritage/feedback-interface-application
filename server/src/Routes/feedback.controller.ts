@@ -1,20 +1,12 @@
 import { RequestHandler } from 'express'
 import feedback from '../model/feedback.model'
-import { feedbackTypes } from '../Types/types'
 import { getAllFeedback } from '../model/feedback.model'
+import { addNewFeedback } from '../model/feedback.model'
 
 export const postFeedback: RequestHandler = (req, res) => {
-  const { rating, text } = req.body
-
-  const newFeedback: feedbackTypes = {
-    id: feedback.length,
-    rating,
-    text,
-  }
-  feedback.push(newFeedback)
-  res.status(201).json({
-    newItem: newFeedback,
-  })
+  const newFeedback = req.body
+  addNewFeedback(newFeedback)
+  res.status(201).json(newFeedback)
 }
 
 export const fetchFeedback: RequestHandler = async (req, res) => {

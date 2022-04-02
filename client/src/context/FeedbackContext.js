@@ -25,7 +25,7 @@ export const FeedbackProvider = ({ children }) => {
   const addFeedback = async (newFeedback) => {
     const response = await axios.post('http://localhost:5000/feedback', newFeedback)
 
-    const data = response.data.newItem
+    const data = response.data
 
     setFeedback([data, ...feedback])
   }

@@ -1,4 +1,4 @@
-import { feedbackTypes } from "../Types/types";
+import { feedbackTypes, mongoTypes } from "../Types/types";
 import feedbackDatabase from "./feedback.mongo";
 
 const feedback: feedbackTypes[] = [
@@ -19,10 +19,25 @@ const feedback: feedbackTypes[] = [
   },
 ];
 
-feedbackDatabase.create(feedback);
-
 export const getAllFeedback = async () => {
- return await feedbackDatabase.find({}, { __v: 0, _id: 0 });
+  return await feedbackDatabase.find({}, { __v: 0, _id: 0 });
 };
+
+
+export const addNewFeedback = async (addfeedback: feedbackTypes) => {
+  const newFeedback: feedbackTypes = {
+    id: addfeedback.id,
+    rating: addfeedback.rating,
+    text: addfeedback.text,
+  };
+  // feedback.push(newFeedback);
+  await feedbackDatabase.findOneAndUpdate(
+    {id : newFeedback.id},
+    {newFeedback},
+    {upsert : true}
+  );
+};
+
+
 
 export default feedback;

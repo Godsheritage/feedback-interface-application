@@ -1,6 +1,7 @@
 import mongoose, { model, Schema, Model, Document } from "mongoose";
 
 const feedbackSchema: Schema = new mongoose.Schema({
+  id: { type: Number },
   rating: { type: Number, required: true },
   text: { type: String, required: true },
 });

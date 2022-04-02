@@ -6,17 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteFeedback = exports.updateFeedback = exports.fetchFeedback = exports.postFeedback = void 0;
 const feedback_model_1 = __importDefault(require("../model/feedback.model"));
 const feedback_model_2 = require("../model/feedback.model");
+const feedback_model_3 = require("../model/feedback.model");
 const postFeedback = (req, res) => {
-    const { rating, text } = req.body;
-    const newFeedback = {
-        id: feedback_model_1.default.length,
-        rating,
-        text,
-    };
-    feedback_model_1.default.push(newFeedback);
-    res.status(201).json({
-        newItem: newFeedback,
-    });
+    const newFeedback = req.body;
+    (0, feedback_model_3.addNewFeedback)(newFeedback);
+    res.status(201).json(newFeedback);
 };
 exports.postFeedback = postFeedback;
 const fetchFeedback = async (req, res) => {

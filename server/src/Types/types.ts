@@ -3,3 +3,9 @@ export interface feedbackTypes {
     rating:number;
     text:string
 }
+
+
+export interface mongoTypes {
+    rating:number;
+    text:string
+}
