@@ -7,9 +7,9 @@ exports.deleteFeedback = exports.updateFeedback = exports.fetchFeedback = export
 const feedback_model_1 = __importDefault(require("../model/feedback.model"));
 const feedback_model_2 = require("../model/feedback.model");
 const feedback_model_3 = require("../model/feedback.model");
-const postFeedback = (req, res) => {
+const postFeedback = async (req, res) => {
     const newFeedback = req.body;
-    (0, feedback_model_3.addNewFeedback)(newFeedback);
+    await (0, feedback_model_3.addNewFeedback)(newFeedback);
     res.status(201).json(newFeedback);
 };
 exports.postFeedback = postFeedback;

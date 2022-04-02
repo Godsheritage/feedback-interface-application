@@ -24,16 +24,16 @@ export const getAllFeedback = async () => {
 };
 
 
-export const addNewFeedback = async (addfeedback: feedbackTypes) => {
-  const newFeedback: feedbackTypes = {
-    id: addfeedback.id,
-    rating: addfeedback.rating,
-    text: addfeedback.text,
-  };
+export const addNewFeedback = async (newFeedback: feedbackTypes) => {
+  // const {rating, text} = addfeedback
+  // const newFeedback: mongoTypes = {
+  //   rating,
+  //   text
+  // };
   // feedback.push(newFeedback);
   await feedbackDatabase.findOneAndUpdate(
-    {id : newFeedback.id},
-    {newFeedback},
+    {rating : newFeedback.rating},
+    newFeedback,
     {upsert : true}
   );
 };

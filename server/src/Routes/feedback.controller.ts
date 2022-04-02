@@ -3,9 +3,9 @@ import feedback from '../model/feedback.model'
 import { getAllFeedback } from '../model/feedback.model'
 import { addNewFeedback } from '../model/feedback.model'
 
-export const postFeedback: RequestHandler = (req, res) => {
+export const postFeedback: RequestHandler = async (req, res) => {
   const newFeedback = req.body
-  addNewFeedback(newFeedback)
+  await addNewFeedback(newFeedback)
   res.status(201).json(newFeedback)
 }
 

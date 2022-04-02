@@ -26,14 +26,14 @@ const getAllFeedback = async () => {
     return await feedback_mongo_1.default.find({}, { __v: 0, _id: 0 });
 };
 exports.getAllFeedback = getAllFeedback;
-const addNewFeedback = async (addfeedback) => {
-    const newFeedback = {
-        id: addfeedback.id,
-        rating: addfeedback.rating,
-        text: addfeedback.text,
-    };
+const addNewFeedback = async (newFeedback) => {
+    // const {rating, text} = addfeedback
+    // const newFeedback: mongoTypes = {
+    //   rating,
+    //   text
+    // };
     // feedback.push(newFeedback);
-    await feedback_mongo_1.default.findOneAndUpdate({ id: newFeedback.id }, { newFeedback }, { upsert: true });
+    await feedback_mongo_1.default.findOneAndUpdate({ rating: newFeedback.rating }, newFeedback, { upsert: true });
 };
 exports.addNewFeedback = addNewFeedback;
 exports.default = feedback;
