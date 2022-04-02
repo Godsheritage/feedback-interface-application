@@ -14,7 +14,7 @@ export const FeedbackProvider = ({ children }) => {
   //to fetch all feedback items from the server
   const fetchFeedback = async () => {
     const response = await axios.get('http://localhost:5000/feedback')
-    setFeedback(response.data.feedbackItems)
+    setFeedback(response.data)
     setIsLoading(false)
   }
 

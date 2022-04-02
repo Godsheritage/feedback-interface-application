@@ -1,6 +1,7 @@
 import { RequestHandler } from 'express'
-import feedback from '../model/feedback'
+import feedback from '../model/feedback.model'
 import { feedbackTypes } from '../Types/types'
+import { getAllFeedback } from '../model/feedback.model'
 
 export const postFeedback: RequestHandler = (req, res) => {
   const { rating, text } = req.body
@@ -16,11 +17,10 @@ export const postFeedback: RequestHandler = (req, res) => {
   })
 }
 
-export const fetchFeedback: RequestHandler = (req, res) => {
-  res.status(200).json({
-    feedbackItems: feedback,
-  })
+export const fetchFeedback: RequestHandler = async (req, res) => {
+  res.status(200).json(await getAllFeedback())
 }
+
 export const updateFeedback: RequestHandler = (req, res) => {
   const id = req.params.id
   const found = feedback.findIndex((items) => items.id === +id)
