@@ -30,8 +30,6 @@ export const FeedbackProvider = ({ children }) => {
     setFeedback([data, ...feedback])
   }
 
-
-
   const deleteFeedback = async (id) => {
     if (window.confirm('Are you sure you want to delete?')) {
       // await fetch(`/feedback/${id}`, { method: 'DELETE' })
