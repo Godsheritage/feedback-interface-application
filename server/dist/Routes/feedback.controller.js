@@ -28,17 +28,20 @@ const feedback_model_1 = __importStar(require("../model/feedback.model"));
 const feedback_model_2 = require("../model/feedback.model");
 const feedback_model_3 = require("../model/feedback.model");
 const feedback_model_4 = require("../model/feedback.model");
-// to add a feedback 
+//TODO change all the route handler names to httpNames
+// to add a feedback to the feedback database
 const postFeedback = async (req, res) => {
     const newFeedback = req.body;
     await (0, feedback_model_3.addNewFeedback)(newFeedback);
     res.status(201).json(newFeedback);
 };
 exports.postFeedback = postFeedback;
+// to fetch all the feedbacks from feedback database
 const fetchFeedback = async (req, res) => {
     res.status(200).json(await (0, feedback_model_2.getAllFeedback)());
 };
 exports.fetchFeedback = fetchFeedback;
+// to update a feedback from your feedback database 
 const updateFeedback = async (req, res) => {
     const id = +req.params.id;
     const updItem = { rating: +req.body.rating, text: req.body.text };
@@ -52,6 +55,8 @@ const updateFeedback = async (req, res) => {
     return res.status(200).json(fetchUpdatedItem);
 };
 exports.updateFeedback = updateFeedback;
+// to update a feedback from the database
+//TODO setup the mongo database to delete a databse 
 const deleteFeedback = (req, res) => {
     const id = req.params.id;
     const found = feedback_model_1.default.findIndex((items) => items.id === +id);
