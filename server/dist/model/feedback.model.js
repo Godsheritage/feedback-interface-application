@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findItem = exports.addNewFeedback = exports.getAllFeedback = void 0;
+exports.foundItem = exports.findItem = exports.addNewFeedback = exports.getAllFeedback = void 0;
 const feedback_mongo_1 = __importDefault(require("./feedback.mongo"));
 const feedback = [
     {
@@ -30,11 +30,17 @@ const addNewFeedback = async (newFeedback) => {
     await feedback_mongo_1.default.findOneAndUpdate({ rating: newFeedback.rating }, newFeedback, { upsert: true });
 };
 exports.addNewFeedback = addNewFeedback;
-const findItem = async (ID) => {
+const findItem = async (ID, updItem) => {
+    const { rating, text } = updItem;
+    return await feedback_mongo_1.default.updateOne({
+        id: ID
+    }, { rating, text });
+};
+exports.findItem = findItem;
+const foundItem = async (ID) => {
     return await feedback_mongo_1.default.findOne({
         id: ID
     });
-    // console.log( await findItem(1))
 };
-exports.findItem = findItem;
+exports.foundItem = foundItem;
 exports.default = feedback;

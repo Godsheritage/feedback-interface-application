@@ -57,7 +57,7 @@ export const FeedbackProvider = ({ children }) => {
   const updateFeedback = async (id, updItem) => {
     const response = await axios.put(`http://localhost:5000/feedback/${id}`, updItem)
 
-    const data = response.data.message
+    const data = response.data
 
     // NOTE: no need to spread data and item
     setFeedback(feedback.map((item) => (item.id === id ? data : item)))
