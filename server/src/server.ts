@@ -9,6 +9,7 @@ const MONGO_URL =
 
 const server = http.createServer(app);
 
+// to alert us when mongoose has connected to mongo db
 mongoose.connection.once("open", () => {
   console.log("MongoDB Connection is ready");
 });
@@ -17,6 +18,7 @@ mongoose.connection.on("eror", (err) => {
   console.error(err);
 });
 
+// to start the server and connect to mongoDB
 const startServer = async () => {
   await mongoose.connect(MONGO_URL);
 
