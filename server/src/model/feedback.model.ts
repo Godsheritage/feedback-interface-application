@@ -1,6 +1,7 @@
 import { feedbackTypes, mongoTypes } from "../Types/types";
 import feedbackDatabase from "./feedback.mongo";
 
+//TODO delete this feedback array after mongoose delete fncn
 const feedback: feedbackTypes[] = [
   {
     id: 0,
