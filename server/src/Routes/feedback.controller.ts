@@ -1,5 +1,5 @@
 import { RequestHandler } from 'express'
-import feedback, { deleteItem, foundItem } from '../model/feedback.model'
+import  { deleteItem, foundItem } from '../model/feedback.model'
 import { getAllFeedback } from '../model/feedback.model'
 import { addNewFeedback } from '../model/feedback.model'
 import { findItem } from '../model/feedback.model'

@@ -6,23 +6,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteItem = exports.foundItem = exports.findItem = exports.addNewFeedback = exports.getAllFeedback = void 0;
 const feedback_mongo_1 = __importDefault(require("./feedback.mongo"));
 //TODO delete this feedback array after mongoose delete fncn
-const feedback = [
-    {
-        id: 0,
-        rating: 10,
-        text: "This is the first feedback item coming from the backend API",
-    },
-    {
-        id: 1,
-        rating: 8,
-        text: "This is the second feedback item coming from the backend API",
-    },
-    {
-        id: 2,
-        rating: 4,
-        text: "This is the third feedback item coming from the backend API",
-    },
-];
+// const feedback: feedbackTypes[] = [
+//   {
+//     id: 0,
+//     rating: 10,
+//     text: "This is the first feedback item coming from the backend API",
+//   },
+//   {
+//     id: 1,
+//     rating: 8,
+//     text: "This is the second feedback item coming from the backend API",
+//   },
+//   {
+//     id: 2,
+//     rating: 4,
+//     text: "This is the third feedback item coming from the backend API",
+//   },
+// ];
 // to fetch all the feedbacks from feedback database
 const getAllFeedback = async () => {
     return await feedback_mongo_1.default.find({}, { __v: 0, _id: 0 });
@@ -53,4 +53,4 @@ const deleteItem = async (ID) => {
     await feedback_mongo_1.default.deleteOne({ id: ID });
 };
 exports.deleteItem = deleteItem;
-exports.default = feedback;
+// export default feedback;
