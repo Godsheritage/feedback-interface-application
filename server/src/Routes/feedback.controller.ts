@@ -7,19 +7,19 @@ import { findItem } from '../model/feedback.model'
 //TODO change all the route handler names to httpNames
 
 // to add a feedback to the feedback database
-export const postFeedback: RequestHandler = async (req, res) => {
+export const httpPostFeedback: RequestHandler = async (req, res) => {
   const newFeedback = req.body
   await addNewFeedback(newFeedback)
   res.status(201).json(newFeedback)
 }
 
 // to fetch all the feedbacks from feedback database
-export const fetchFeedback: RequestHandler = async (req, res) => {
+export const httpFetchFeedback: RequestHandler = async (req, res) => {
   res.status(200).json(await getAllFeedback())
 }
 
 // to update a feedback from your feedback database 
-export const updateFeedback: RequestHandler = async (req, res) => {
+export const httpUpdateFeedback: RequestHandler = async (req, res) => {
   const id = +req.params.id;
   const updItem = { rating: +req.body.rating, text: req.body.text };
   const findAndUpdate = await findItem(id, updItem);
@@ -35,7 +35,7 @@ export const updateFeedback: RequestHandler = async (req, res) => {
 
 
 //TODO setup the mongo database to delete a databse 
-export const deleteFeedback: RequestHandler = (req, res) => {
+export const httpDeleteFeedback: RequestHandler = (req, res) => {
   const id = req.params.id 
   const found = feedback.findIndex((items) => items.id === +id)
 

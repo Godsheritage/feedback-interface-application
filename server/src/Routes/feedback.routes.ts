@@ -1,19 +1,19 @@
 import { Router } from 'express'
 import {
-  postFeedback,
-  fetchFeedback,
-  updateFeedback,
-  deleteFeedback,
+  httpPostFeedback,
+  httpFetchFeedback,
+  httpUpdateFeedback,
+  httpDeleteFeedback,
 } from './feedback.controller'
 
 const feedbackRouter = Router()
 
-feedbackRouter.post('/', postFeedback)
+feedbackRouter.post('/', httpPostFeedback)
 
-feedbackRouter.get('/', fetchFeedback)
+feedbackRouter.get('/', httpFetchFeedback)
 
-feedbackRouter.put('/:id', updateFeedback)
+feedbackRouter.put('/:id', httpUpdateFeedback)
 
-feedbackRouter.delete('/:id', deleteFeedback)
+feedbackRouter.delete('/:id', httpDeleteFeedback)
 
 export default feedbackRouter
