@@ -2,7 +2,9 @@ import http from "http";
 import app from "./app";
 import mongoose from "mongoose";
 
+// express API ports
 const PORT = process.env.PORT || 5000;
+
 // mongo Url from the feedback cluster
 const MONGO_URL = "mongodb+srv://feedback-api:Heritage4lyf@feedbackcluster.pweoe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
