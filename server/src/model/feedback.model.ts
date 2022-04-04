@@ -51,7 +51,12 @@ export const foundItem = async (ID: number) => {
   })
 } 
 
-
+// to delete items in a database
+export const deleteItem = async (ID : any) => {
+  await feedbackDatabase.deleteOne(
+    {id:ID}
+  ) 
+}
 
 
 export default feedback;

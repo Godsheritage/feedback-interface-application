@@ -1,5 +1,5 @@
 import { RequestHandler } from 'express'
-import feedback, { foundItem } from '../model/feedback.model'
+import feedback, { deleteItem, foundItem } from '../model/feedback.model'
 import { getAllFeedback } from '../model/feedback.model'
 import { addNewFeedback } from '../model/feedback.model'
 import { findItem } from '../model/feedback.model'
@@ -33,20 +33,26 @@ export const httpUpdateFeedback: RequestHandler = async (req, res) => {
 };
 
 // to delete a feedback from your feedback database
-//TODO setup the mongo database to delete a databse 
-export const httpDeleteFeedback: RequestHandler = (req, res) => {
-  const id = req.params.id 
-  const found = feedback.findIndex((items) => items.id === +id)
+//TODO setup the mongo database to delete a database 
 
-  if (found < 0) {
+export const httpDeleteFeedback: RequestHandler = async (req, res) => {
+  const ID = +req.params.id 
+  // const found = feedback.findIndex((items) => items.id === +id)
+
+  const fetchUpdatedItem = await foundItem(ID)
+
+   if (!fetchUpdatedItem) {
     return res.status(400).json({
-      error: `item with id ${id} is not found`,
-    })
+      error: `item with id ${ID} is not found`,
+    });
   }
 
-  feedback.splice(found, 1)
+  await deleteItem(ID)
+  // feedback.splice(found, 1)
 
   res.status(200).json({
-    message: feedback.filter((items) => items.id !== +id),
+    ok : true
   })
+    // message: feedback.filter((items) => items.id !== +id),
+  
 }
