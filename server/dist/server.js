@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const http_1 = __importDefault(require("http"));
 const app_1 = __importDefault(require("./app"));
 const mongoose_1 = __importDefault(require("mongoose"));
+// express API ports
 const PORT = process.env.PORT || 5000;
 // mongo Url from the feedback cluster
 const MONGO_URL = "mongodb+srv://feedback-api:Heritage4lyf@feedbackcluster.pweoe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";

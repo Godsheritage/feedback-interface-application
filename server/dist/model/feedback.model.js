@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.foundItem = exports.findItem = exports.addNewFeedback = exports.getAllFeedback = void 0;
 const feedback_mongo_1 = __importDefault(require("./feedback.mongo"));
+//TODO delete this feedback array after mongoose delete fncn
 const feedback = [
     {
         id: 0,

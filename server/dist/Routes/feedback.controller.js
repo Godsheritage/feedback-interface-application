@@ -23,26 +23,25 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteFeedback = exports.updateFeedback = exports.fetchFeedback = exports.postFeedback = void 0;
+exports.httpDeleteFeedback = exports.httpUpdateFeedback = exports.httpFetchFeedback = exports.httpPostFeedback = void 0;
 const feedback_model_1 = __importStar(require("../model/feedback.model"));
 const feedback_model_2 = require("../model/feedback.model");
 const feedback_model_3 = require("../model/feedback.model");
 const feedback_model_4 = require("../model/feedback.model");
-//TODO change all the route handler names to httpNames
 // to add a feedback to the feedback database
-const postFeedback = async (req, res) => {
+const httpPostFeedback = async (req, res) => {
     const newFeedback = req.body;
     await (0, feedback_model_3.addNewFeedback)(newFeedback);
     res.status(201).json(newFeedback);
 };
-exports.postFeedback = postFeedback;
+exports.httpPostFeedback = httpPostFeedback;
 // to fetch all the feedbacks from feedback database
-const fetchFeedback = async (req, res) => {
+const httpFetchFeedback = async (req, res) => {
     res.status(200).json(await (0, feedback_model_2.getAllFeedback)());
 };
-exports.fetchFeedback = fetchFeedback;
+exports.httpFetchFeedback = httpFetchFeedback;
 // to update a feedback from your feedback database 
-const updateFeedback = async (req, res) => {
+const httpUpdateFeedback = async (req, res) => {
     const id = +req.params.id;
     const updItem = { rating: +req.body.rating, text: req.body.text };
     const findAndUpdate = await (0, feedback_model_4.findItem)(id, updItem);
@@ -54,10 +53,10 @@ const updateFeedback = async (req, res) => {
     }
     return res.status(200).json(fetchUpdatedItem);
 };
-exports.updateFeedback = updateFeedback;
-// to update a feedback from the database
+exports.httpUpdateFeedback = httpUpdateFeedback;
+// to delete a feedback from your feedback database
 //TODO setup the mongo database to delete a databse 
-const deleteFeedback = (req, res) => {
+const httpDeleteFeedback = (req, res) => {
     const id = req.params.id;
     const found = feedback_model_1.default.findIndex((items) => items.id === +id);
     if (found < 0) {
@@ -70,4 +69,4 @@ const deleteFeedback = (req, res) => {
         message: feedback_model_1.default.filter((items) => items.id !== +id),
     });
 };
-exports.deleteFeedback = deleteFeedback;
+exports.httpDeleteFeedback = httpDeleteFeedback;
