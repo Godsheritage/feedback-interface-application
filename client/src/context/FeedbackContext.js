@@ -44,14 +44,14 @@ export const FeedbackProvider = ({ children }) => {
 
     setFeedback([data, ...feedback])
   }
-
+// delete feedback from the API
   const deleteFeedback = async (id) => {
     if (window.confirm('Are you sure you want to delete?')) {
       await axios.delete(`http://localhost:5000/feedback/${id}`)
       setFeedback(feedback.filter((item) => item.id !== id))
     }
   }
-
+// Update feedback from the API
   const updateFeedback = async (id, updItem) => {
     const response = await axios.put(
       `http://localhost:5000/feedback/${id}`,
