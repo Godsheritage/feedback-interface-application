@@ -4,7 +4,6 @@ import { getAllFeedback } from '../model/feedback.model'
 import { addNewFeedback } from '../model/feedback.model'
 import { findItem } from '../model/feedback.model'
 
-//TODO change all the route handler names to httpNames
 
 // to add a feedback to the feedback database
 export const httpPostFeedback: RequestHandler = async (req, res) => {
