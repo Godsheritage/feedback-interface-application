@@ -33,7 +33,7 @@ export const updateFeedback: RequestHandler = async (req, res) => {
   return res.status(200).json(fetchUpdatedItem);
 };
 
-// to update a feedback from the database
+
 //TODO setup the mongo database to delete a databse 
 export const deleteFeedback: RequestHandler = (req, res) => {
   const id = req.params.id 
