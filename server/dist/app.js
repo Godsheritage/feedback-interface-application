@@ -7,10 +7,12 @@ const express_1 = __importDefault(require("express"));
 const feedback_routes_1 = __importDefault(require("./Routes/feedback.routes"));
 const path_1 = __importDefault(require("path"));
 const cors_1 = __importDefault(require("cors"));
+const morgan_1 = __importDefault(require("morgan"));
 // setup the express application
 const app = (0, express_1.default)();
 // to enable the Cross-Origin Resource Sharing
 app.use((0, cors_1.default)());
+app.use((0, morgan_1.default)('combined'));
 // to setup th e express aplication
 app.use(express_1.default.json());
 // to setup the feedback Route
