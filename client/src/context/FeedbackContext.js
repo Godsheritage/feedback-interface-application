@@ -3,8 +3,6 @@ import { createContext, useState, useEffect } from 'react'
 
 const FeedbackContext = createContext()
 
-// let id = 0; 
-
 export const FeedbackProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [feedback, setFeedback] = useState([])
@@ -26,18 +24,21 @@ export const FeedbackProvider = ({ children }) => {
   }, [])
 
   //TODO create an id state and set increment on every new feedback
-
+  // new feedback data model
   const newFeedback = (text, rating) => {
     setId(id + 1)
-    return ({
-      id : id,
-      text : text,
-      rating : rating
-    })
+    return {
+      id: id,
+      text: text,
+      rating: rating,
+    }
   }
-
+// fetch all feedback from API
   const addFeedback = async (newFeedback) => {
-    const response = await axios.post('http://localhost:5000/feedback', newFeedback)
+    const response = await axios.post(
+      'http://localhost:5000/feedback',
+      newFeedback
+    )
 
     const data = response.data
 
@@ -46,16 +47,16 @@ export const FeedbackProvider = ({ children }) => {
 
   const deleteFeedback = async (id) => {
     if (window.confirm('Are you sure you want to delete?')) {
-      // await fetch(`/feedback/${id}`, { method: 'DELETE' })
-
       await axios.delete(`http://localhost:5000/feedback/${id}`)
-
       setFeedback(feedback.filter((item) => item.id !== id))
     }
   }
 
   const updateFeedback = async (id, updItem) => {
-    const response = await axios.put(`http://localhost:5000/feedback/${id}`, updItem)
+    const response = await axios.put(
+      `http://localhost:5000/feedback/${id}`,
+      updItem
+    )
 
     const data = response.data
 
