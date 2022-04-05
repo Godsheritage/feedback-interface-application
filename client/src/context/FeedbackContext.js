@@ -33,7 +33,8 @@ export const FeedbackProvider = ({ children }) => {
       rating: rating,
     }
   }
-// fetch all feedback from API
+
+// add a feedback to the API
   const addFeedback = async (newFeedback) => {
     const response = await axios.post(
       'http://localhost:5000/feedback',
@@ -44,6 +45,7 @@ export const FeedbackProvider = ({ children }) => {
 
     setFeedback([data, ...feedback])
   }
+
 // delete feedback from the API
   const deleteFeedback = async (id) => {
     if (window.confirm('Are you sure you want to delete?')) {
@@ -51,6 +53,7 @@ export const FeedbackProvider = ({ children }) => {
       setFeedback(feedback.filter((item) => item.id !== id))
     }
   }
+
 // Update feedback from the API
   const updateFeedback = async (id, updItem) => {
     const response = await axios.put(

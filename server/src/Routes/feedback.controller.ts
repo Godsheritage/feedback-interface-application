@@ -33,11 +33,8 @@ export const httpUpdateFeedback: RequestHandler = async (req, res) => {
 };
 
 // to delete a feedback from your feedback database
-//TODO setup the mongo database to delete a database 
-
 export const httpDeleteFeedback: RequestHandler = async (req, res) => {
   const ID = +req.params.id 
-  // const found = feedback.findIndex((items) => items.id === +id)
 
   const fetchUpdatedItem = await foundItem(ID)
 
@@ -48,11 +45,8 @@ export const httpDeleteFeedback: RequestHandler = async (req, res) => {
   }
 
   await deleteItem(ID)
-  // feedback.splice(found, 1)
-
   res.status(200).json({
     ok : true
   })
-    // message: feedback.filter((items) => items.id !== +id),
   
 }
