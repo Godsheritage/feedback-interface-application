@@ -18,13 +18,13 @@ app.use(express_1.default.json());
 // to setup the feedback Route
 app.use("/feedback", feedback_routes_1.default);
 //serve static assets if in production
-if (process.env.NODE_ENV === "production") {
-    // set static folder
-    //to serve the front end with the back end
-    app.use(express_1.default.static(path_1.default.resolve(__dirname, "..", "public ")));
-    // to get the index.html page
-    app.get("/*", (req, res) => {
-        res.sendFile(path_1.default.resolve(__dirname, "..", "public ", "index.html"));
-    });
-}
+// if (process.env.NODE_ENV === "production") {
+// set static folder
+//to serve the front end with the back end
+app.use(express_1.default.static(path_1.default.resolve(__dirname, "..", "public ")));
+// to get the index.html page
+app.get("/*", (req, res) => {
+    res.sendFile(path_1.default.resolve(__dirname, "..", "public ", "index.html"));
+});
+// }
 exports.default = app;

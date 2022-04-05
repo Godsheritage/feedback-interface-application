@@ -20,9 +20,9 @@ app.use("/feedback", feedbackRouter);
 
 //serve static assets if in production
 
-if (process.env.NODE_ENV === "production") {
+// if (process.env.NODE_ENV === "production") {
   // set static folder
-  
+
   //to serve the front end with the back end
   app.use(express.static(path.resolve(__dirname, "..", "public ")));
 
@@ -30,6 +30,6 @@ if (process.env.NODE_ENV === "production") {
   app.get("/*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "..", "public ", "index.html"));
   });
-}
+// }
 
 export default app;
